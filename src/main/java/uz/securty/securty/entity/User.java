@@ -15,11 +15,11 @@ public class User {
 
     private Long id;
 
-    @Column(nullable = false ,name = "first_name")
-    private String FirstName;
+    @Column(nullable = false )
+    private String ism;
 
-    @Column(nullable = false ,name = "last_name")
-    private String LastName;
+    @Column(nullable = false)
+    private String familiya;
 
 
 
@@ -32,7 +32,7 @@ public class User {
     @Size(max = 60 ,min = 60)
     @NotNull
     @Column(unique = true , nullable = false)
-    private String password;
+    private String parol;
 
     private Boolean active;
 
@@ -43,6 +43,8 @@ public class User {
     @Column( name = "lavozim_id")
 
       private Set<Lavozim> lavozims;
+
+
 
 
     public Set<Lavozim> getLavozims() {
@@ -61,20 +63,20 @@ public class User {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return FirstName;
+    public String getIsm() {
+        return ism;
     }
 
-    public void setFirstName(String firstName) {
-        FirstName = firstName;
+    public void setIsm(String ism) {
+        this.ism = ism;
     }
 
-    public String getLastName() {
-        return LastName;
+    public String getFamiliya() {
+        return familiya;
     }
 
-    public void setLastName(String lastName) {
-        LastName = lastName;
+    public void setFamiliya(String familiya) {
+        this.familiya = familiya;
     }
 
     public String getLogin() {
@@ -85,12 +87,12 @@ public class User {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
+    public String getParol() {
+        return parol;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setParol(String parol) {
+        this.parol = parol;
     }
 
     public Boolean getActive() {

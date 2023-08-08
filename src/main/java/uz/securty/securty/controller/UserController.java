@@ -11,9 +11,9 @@ import javax.jws.soap.SOAPBinding;
 import java.util.List;
 
 @RestController
+@PreAuthorize("hasAnyAuthority(\"ADMIN\", \"MANAGER\")")
 @RequestMapping("api/user")
-@CrossOrigin(origins = "*" ,maxAge = 3600)
-@PreAuthorize("hasAnyAuthority(\"ADMIN\",\"MANAGER\")")
+@CrossOrigin(origins = "*", maxAge = 3600)
 public class UserController {
 
 

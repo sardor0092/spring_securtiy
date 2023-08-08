@@ -30,13 +30,8 @@ public class UserServiceImpl implements UserService {
     @Autowired
     UserRepository userRepository;
 
-
+    @Autowired
     PasswordEncoder encoder;
-
-    @Bean
-    public BCryptPasswordEncoder encoder() {
-        return new BCryptPasswordEncoder();
-    }
 
     @Override
     public Optional<User> getByIdEntity(Long id) {
@@ -63,7 +58,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO create(User user) {
-        user.setPassword(encoder.encode(user.getPassword()));
+        user.setParol(encoder.encode(user.getParol()));
 //        user.setLavozims(Set.of(Lavozim.MANAGER));
         return new UserDTO(userRepository.save(user));
 

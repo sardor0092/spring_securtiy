@@ -19,15 +19,11 @@ public class UserProvider implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         Optional<User> user  = userRepository.findByLogin(username);
-
         if(user.isPresent()){
 
               return new UserMaxsus(user.get());
 
         }
-
-
-   throw new UsernameNotFoundException(username);
-
+              throw new UsernameNotFoundException(username);
     }
 }

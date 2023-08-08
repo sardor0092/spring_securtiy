@@ -11,31 +11,25 @@ import java.util.stream.Collectors;
 
 public class UserMaxsus implements UserDetails {
 
-    private  String login;
-    private String password;
-
+    private String login;
+    private String parol;
     private Set<SimpleGrantedAuthority> lavozimlar;
-    private  Boolean active;
+    private Boolean aktiv;
 
-    public UserMaxsus() {
-    }
+    public UserMaxsus(){}
 
 
     public UserMaxsus(User user){
-
-
         this.login = user.getLogin();
-        this.password = user.getPassword();
+        this.parol = user.getParol();
 
-        this.lavozimlar = user.getLavozims()
-                .stream()
-                .map(l->new SimpleGrantedAuthority(l.name()))
-                .collect(Collectors.toSet());
-
-        this.active =  user.getActive();
+        this.lavozimlar =
+                user.getLavozims()
+                        .stream()
+                        .map(l->new SimpleGrantedAuthority(l.name()))
+                        .collect(Collectors.toSet());
+        this.aktiv = user.getActive();
     }
-
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -44,7 +38,7 @@ public class UserMaxsus implements UserDetails {
 
     @Override
     public String getPassword() {
-        return password;
+        return parol;
     }
 
     @Override
@@ -69,6 +63,41 @@ public class UserMaxsus implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return active;
+        return aktiv;
+    }
+
+
+
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getParol() {
+        return parol;
+    }
+
+    public void setParol(String parol) {
+        this.parol = parol;
+    }
+
+    public Set<SimpleGrantedAuthority> getLavozimlar() {
+        return lavozimlar;
+    }
+
+    public void setLavozimlar(Set<SimpleGrantedAuthority> lavozimlar) {
+        this.lavozimlar = lavozimlar;
+    }
+
+    public Boolean getAktiv() {
+        return aktiv;
+    }
+
+    public void setAktiv(Boolean aktiv) {
+        this.aktiv = aktiv;
     }
 }
